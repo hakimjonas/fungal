@@ -3,3 +3,9 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+.idea/
+target/
+project/target/
+project/project/
+.DS_Store  # If you are on a Mac
+*.iml
