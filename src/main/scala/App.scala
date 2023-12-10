@@ -1,4 +1,7 @@
-object App extends App {
-  // Your server setup and initialization code
-}
+import zio.{ZIOAppDefault, ExitCode, URIO}
 
+object App extends ZIOAppDefault {
+  def run: URIO[Any, ExitCode] = {
+    FungalServer.run
+  }
+}
