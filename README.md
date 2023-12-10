@@ -1,6 +1,6 @@
 # FUNGAL: Functional User-centric Networked Guided Authoring Logic
 
-FUNGAL is an open-source publishing platform built with Scala 3, http4s, and ProtoQuill. It aims to provide a modern, user-centric, and networked environment for content creators and readers.
+Fungal is a modern, Scala-based web application built on the robust ZIO ecosystem. Leveraging the power of functional programming, Fungal aims to provide a seamless and efficient user experience, backed by a strong, type-safe, and concurrent backend.
 
 ## Vision
 
