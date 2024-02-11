@@ -1,29 +1,22 @@
 name := "fungal"
 
-version := "0.1.0-SNAPSHOT"
+version := "0.2.0-SNAPSHOT"
 
 ThisBuild / scalaVersion := "3.3.1"
 
 javacOptions ++= Seq("-source", "21", "-target", "21")
 
 libraryDependencies ++= Seq(
-  "dev.zio" %% "zio" % "2.0.18",
-  "dev.zio" %% "zio-http" % "3.0.0-RC2",
+  "dev.zio" %% "zio" % "2.0.19",
+  "dev.zio" %% "zio-http" % "3.0.0-RC4",
+  "dev.zio" %% "zio-json" % "0.6.2",
+  "dev.zio" %% "zio-logging" % "2.1.12",
   "org.scalactic" %% "scalactic" % "3.2.17",
   "org.scalatest" %% "scalatest" % "3.2.17" % "test",
-  "io.circe" %% "circe-generic" % "0.14.5",
-  // Syncronous JDBC Modules
-  "io.getquill" %% "quill-jdbc" % "4.7.3",
-  // Or ZIO Modules
-  "io.getquill" %% "quill-jdbc-zio" % "4.7.3",
-  // Or Cassandra
-  "io.getquill" %% "quill-cassandra" % "4.7.3",
-  // Or Cassandra + ZIO
-  "io.getquill" %% "quill-cassandra-zio" % "4.7.3",
-  // Add for Caliban Integration
-  "io.getquill" %% "quill-caliban" % "4.7.3",
-  "org.typelevel" %% "log4cats-core" % "2.6.0",
-  "org.typelevel" %% "log4cats-slf4j" % "2.6.0"
+  "io.circe" %% "circe-generic" % "0.14.6",
+  "dev.zio" %% "zio-nio" % "2.0.2",
+  "com.lihaoyi" %% "scalatags" % "0.12.0",
+  "dev.zio" %% "zio-redis" % "0.2.0"
 )
 
-Compile / mainClass := Some("App")
+Compile / mainClass := Some("MainApp")
