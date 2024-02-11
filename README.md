@@ -1,10 +1,13 @@
 # FUNGAL: Functional User-centric Networked Guided Authoring Logic
 
-Fungal is a modern, Scala-based web application built on the robust ZIO ecosystem. Leveraging the power of functional programming, Fungal aims to provide a seamless and efficient user experience, backed by a strong, type-safe, and concurrent backend.
+Fungal is a modern, Scala-based web application built on the robust ZIO ecosystem. Leveraging the power of functional
+programming, Fungal aims to provide a seamless and efficient user experience, backed by a strong, type-safe, and
+concurrent backend.
 
 ## Vision
 
-Our vision is to create a publishing platform that embraces the functional programming paradigm, provides a guided authoring experience, and fosters a community of engaged readers and writers.
+Our vision is to create a publishing platform that embraces the functional programming paradigm, provides a guided
+authoring experience, and fosters a community of engaged readers and writers.
 
 ## Core Principles
 
@@ -17,8 +20,8 @@ Our vision is to create a publishing platform that embraces the functional progr
 ## Technology Stack
 
 - **Language**: Scala 3
-- **Web Framework**: http4s
-- **Database Library**: ProtoQuill
+- **Web Framework**: zio-http
+
 
 ## Getting Started
 
