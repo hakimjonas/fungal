@@ -1,15 +1,13 @@
-import web.{ MiddleWares, Routing }
+import web.Routing
+import web.Routing.app
 import zio.*
 import zio.http.*
 
 import scala.language.postfixOps
 
 object MainApp extends ZIOAppDefault {
-
-  private val app = Routing.app
-  private val serverTime = MiddleWares.serverTime
-  private val middlewares = MiddleWares.middlewares
-
-  val run: ZIO[Any, Throwable, Nothing] =
-    Server.serve(app @@ middlewares).provide(Server.default)
+  val run: ZIO[Any with ZIOAppArgs with Scope, Throwable, Unit] = for {
+    _ <- Routing.initRoutes() // Initialize dynamic routes
+    _ <- Server.serve(Routing.app).provide(Server.default).forever
+  } yield ()
 }
