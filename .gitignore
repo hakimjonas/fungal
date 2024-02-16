@@ -9,4 +9,5 @@ project/target/
 project/project/
 .DS_Store  # If you are on a Mac
 .idea/ # If you are using IntelliJ IDEA
+.bsp/ # You should build with sbt anyways
 *.iml
