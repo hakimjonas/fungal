@@ -15,8 +15,7 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.2.17" % "test",
   "io.circe" %% "circe-generic" % "0.14.6",
   "dev.zio" %% "zio-nio" % "2.0.2",
-  "com.lihaoyi" %% "scalatags" % "0.12.0",
-  "dev.zio" %% "zio-redis" % "0.2.0"
+  "dev.zio" %% "zio-redis" % "0.2.0",
 )
 
 Compile / mainClass := Some("MainApp")
