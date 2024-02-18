@@ -1,26 +1,26 @@
 package core.models
 
-import scalatags.Text.all._
-import scalatags.Text.tags2.title
+import zio.http.template.Html.fromDomElement
+import zio.http.template.{ Dom, Elements, Html }
 
 /**
- * A class to represent a basic html page
+ * A page is an abstract class that represents a web page. It contains a title and a body content.
  */
-final class Page(val title: String, val content: Frag) {}
+abstract class Page extends Elements {
+  def pageTitle: String
 
-object Page {
-  def render(page: Page): String = {
-    "<!DOCTYPE html>" +
-      html(
-        head(
-          meta(charset := "UTF-8"),
-          meta(name := "viewport", content := "width=device-width, initial-scale=1.0"),
-          title(page.title),
-        ),
-        body(
-          page.content,
-        ),
-      ).render
+  protected def headContent: Seq[Dom] = Seq.empty
+
+  def bodyContent: Seq[Dom]
+
+  private def renderHead: Dom = {
+    val titleElement = Seq(title(Dom.text(pageTitle)))
+    val fullHeadContent = titleElement ++ headContent
+    head(fullHeadContent)
   }
+  private def renderBody: Dom =
+    body(bodyContent)
 
+  def render: Html =
+    Html.fromDomElement(html(renderHead, renderBody))
 }

@@ -1,13 +1,14 @@
 package web
-
+import core.models.HomePage
 import zio.*
 import zio.http.*
 import zio.http.HttpApp.*
+
 import scala.collection.concurrent.TrieMap
 
 class Routing(var routes: TrieMap[String, HttpApp[Any]]) {
 
-  def addRoute(path: String, handler: HttpApp[Any]): UIO[Boolean] =
+  private def addRoute(path: String, handler: HttpApp[Any]): UIO[Boolean] =
     ZIO.succeed {
       routes.putIfAbsent(path, handler).isEmpty
     }
@@ -35,22 +36,27 @@ class Routing(var routes: TrieMap[String, HttpApp[Any]]) {
 
 object Routing {
   private val initialRoutes: TrieMap[String, HttpApp[Any]] = TrieMap.empty
-
   private val routingInstance = new Routing(initialRoutes)
 
-  // Initialize with example routes
+  // Usage in the route
+  private val homePage = new HomePage() // Initialize with example routes
+
   def initRoutes(): ZIO[Any, Nothing, Boolean] = for {
+
     _ <- routingInstance.addRoute(
       path = "/text",
-      handler = HttpApp.collectZIO { case _ => ZIO.succeed(Response.text("Hello, World!")) }
+      handler = HttpApp.collectZIO { case _ => ZIO.succeed(Response.text("Hello, World!")) },
     )
     _ <- routingInstance.addRoute(
       path = "/json",
-      handler = HttpApp.collectZIO { case _ => ZIO.succeed(Response.json("""{"message": "Hello JSON"}""")) }
+      handler = HttpApp.collectZIO { case _ => ZIO.succeed(Response.json("""{"message": "Hello JSON"}""")) },
+    )
+    _ <- routingInstance.addRoute(
+      "/home",
+      HttpApp.collectZIO { case _ => ZIO.succeed(Response.html(homePage.render)) },
     )
   } yield true
 
-
   // The main HttpApp now references the dynamic routes
-  val app: HttpApp[Any] = routingInstance.toHttpApp
+  val app: HttpApp[Any] = routingInstance.toHttpApp @@ MiddleWares.staticFileMiddleware
 }
