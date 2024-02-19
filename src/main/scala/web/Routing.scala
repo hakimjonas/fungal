@@ -55,6 +55,10 @@ object Routing {
       "/home",
       HttpApp.collectZIO { case _ => ZIO.succeed(Response.html(homePage.render)) },
     )
+    _ <- routingInstance.addRoute(
+      "/",
+      HttpApp.collectZIO { case _ => ZIO.succeed(Response.html(homePage.render)) },
+    )
   } yield true
 
   // The main HttpApp now references the dynamic routes
