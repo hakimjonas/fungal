@@ -11,3 +11,4 @@ project/project/
 .idea/ # If you are using IntelliJ IDEA
 .bsp/ # You should build with sbt anyways
 *.iml
+.bsp
