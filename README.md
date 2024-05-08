@@ -1,6 +1,3 @@
-
-# <p align="left"> ![fungal](https://github.com/hakimjonas/fungal/assets/3774539/25cbf200-0792-42be-bd87-ae6eb6179b56) </p> FUNGAL: Functional User-centric Networked Guided Authoring Logic
-
 Fungal is a modern, Scala-based web application built on the robust ZIO ecosystem. Leveraging the power of functional
 programming, Fungal aims to provide a seamless and efficient user experience, backed by a strong, type-safe, and
 concurrent backend.
